@@ -1,10 +1,19 @@
 FROM python:3.6.4-alpine3.7
 
 RUN apk update && apk add \
-        postgresql-dev \
         python3-dev \
         gcc \
         make \
+        nano \
+        gfortran \
+        py-pip \
+        build-base \
+        wget \
+        freetype-dev \
+        libpng-dev \
+        openblas-dev \
+        jpeg-dev \
+        zlib-dev \
         musl-dev \
         linux-headers && \
         mkdir app
