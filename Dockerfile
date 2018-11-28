@@ -1,22 +1,15 @@
 FROM python:3.6.4-alpine3.7
 
-RUN apk update && apk add \
-        python3-dev \
+RUN apk update && apk add --no-cache --virtual .build-deps \
         gcc \
         make \
         nano \
-        gfortran \
-        py-pip \
-        build-base \
-        wget \
-        freetype-dev \
-        libpng-dev \
-        openblas-dev \
-        jpeg-dev \
-        zlib-dev \
+        python3-dev \
+        linux-headers \
         musl-dev \
-        linux-headers && \
-        mkdir app
+        postgresql-dev \
+        && pip install --no-cache-dir psycopg2 \
+        && apk del --no-cache .build-deps
 
 WORKDIR /app/
 
@@ -26,7 +19,6 @@ ENV PYTHONUNBUFFERED 1
 
 ADD . /app/
 
-RUN if [ -s requirements.txt ]; then pip install --upgrade pip; fi
 RUN if [ -s requirements.txt ]; then pip install -r requirements.txt; fi
 EXPOSE 8092
 VOLUME /app/pubcloud/assets
