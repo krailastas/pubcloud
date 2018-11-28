@@ -1,0 +1,6 @@
+Django==2.1
+bpython==0.16
+psycopg2==2.7.4
+celery==3.1.25
+redis==2.10.6
+psycopg2-binary==2.7.6.1
