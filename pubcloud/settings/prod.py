@@ -1,7 +1,7 @@
 # encoding: utf-8
 from .base import *  # NOQA
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # MANAGER CONFIGURATION
 # https://docs.djangoproject.com/en/1.11/ref/settings/#admins

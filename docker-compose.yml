@@ -1,0 +1,21 @@
+server:
+  container_name: server
+  build: nginx
+  restart: always
+  ports:
+    - "80:80"
+    - "443:443"
+  links:
+    - backend
+  volumes_from:
+    - backend
+
+backend:
+  container_name: pubcloud-backend
+  image: krailas/pubcloud:latest
+  hostname: pubcloud-backend
+  restart: always
+  env_file: .env
+  external_links:
+    - db
+    - redis
