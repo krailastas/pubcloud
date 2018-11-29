@@ -8,6 +8,8 @@ RUN apk update && apk add --no-cache --virtual .build-deps \
         linux-headers \
         musl-dev \
         postgresql-dev \
+        build-dep \
+        python-psycopg2 \
         && pip install --no-cache-dir psycopg2 \
         && apk del --no-cache .build-deps
 
