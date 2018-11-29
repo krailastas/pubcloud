@@ -1,16 +1,15 @@
 FROM python:3.6.4-alpine3.7
 
-RUN apk update && apk add --no-cache --virtual .build-deps \
-        gcc \
-        make \
-        nano \
-        python3-dev \
-        linux-headers \
-        musl-dev \
+RUN apk update && apk add \
         postgresql-dev \
-        py-pip \
-        && pip install --no-cache-dir psycopg2 \
-        && apk del --no-cache .build-deps
+        libpq-dev \
+        python3-dev \
+        gcc \
+        jpeg-dev \
+        zlib-dev \
+        musl-dev \
+        linux-headers && \
+        mkdir app
 
 WORKDIR /app/
 
